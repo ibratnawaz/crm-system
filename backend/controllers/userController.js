@@ -72,7 +72,7 @@ const activateAccount = asyncHandler(async (req, res) => {
   res.send(`Account activated !!`)
 })
 
-// @desc      Send link to the registered user to reset password
+// @desc      Send Email with temporary password to the user
 // @route     POST /api/users/forgot/password
 // @access    Public
 const forgotPassword = asyncHandler(async (req, res) => {
@@ -91,14 +91,14 @@ const forgotPassword = asyncHandler(async (req, res) => {
 })
 
 // @desc      View user profile
-// @route     GET /api/users/me
+// @route     GET /api/users/profile/me
 // @access    Private
 const myProfile = asyncHandler(async (req, res) => {
   res.status(200).json(req.user)
 })
 
 // @desc      Update user profile
-// @route     PUT /api/users/me
+// @route     PUT /api/users/profile/me
 // @access    Private
 const updateProfile = asyncHandler(async (req, res) => {
   const updates = Object.keys(req.body)
