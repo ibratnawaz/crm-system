@@ -48,8 +48,8 @@ const registerUser = asyncHandler(async (req, res) => {
   }
 })
 
-// @route     GET api/users/logout
 // @desc      Logout a user
+// @route     GET /api/users/logout
 // @access    Private
 const logoutUser = asyncHandler(async (req, res) => {
   req.user.token = ''
@@ -58,8 +58,8 @@ const logoutUser = asyncHandler(async (req, res) => {
   res.status(200).json('logout successfully')
 })
 
-// @route     GET api/users/account/activate/:id
-// @desc      activate user account
+// @desc      Activate user account
+// @route     GET /api/users/account/activate/:id
 // @access    Public
 const activateAccount = asyncHandler(async (req, res) => {
   const user = await User.findOne({ activationString: req.params.id })
