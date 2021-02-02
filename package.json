@@ -1,0 +1,28 @@
+{
+  "name": "crm-system",
+  "version": "1.0.0",
+  "description": "CRM stands for “Customer Relationship Management” and refers to all strategies techniques, tools, and technologies used by enterprises for developing, retaining and acquiring customers.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node backend/index",
+    "serve": "nodemon backend/index"
+  },
+  "keywords": [],
+  "author": "Ibrat Nawaz",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "colors": "^1.4.0",
+    "crypto-random-string": "^3.3.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-async-handler": "^1.1.4",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.11.14",
+    "nodemailer": "^6.4.17",
+    "validator": "^13.5.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  }
+}
