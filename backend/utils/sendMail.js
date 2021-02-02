@@ -40,8 +40,8 @@ async function sendMail(user, type) {
         to: `${email}`,
         subject: `Reset Password`,
         html: `<h3>Hi ${first_name} ${last_name}</h3><br/>
-            <p>Here's your reset password link.</p>
-            <p>http://localhost:5000/api/users/forgot/password/redirect/${_id}</p>`,
+            <p>Here's your temporary password <mark>Pwd$123</mark> </p><br/>
+            <p>Note: Use the given password to sign in and update your password.</p>`,
       })
     }
   } catch (error) {

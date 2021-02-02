@@ -72,4 +72,106 @@ const activateAccount = asyncHandler(async (req, res) => {
   res.send(`Account activated !!`)
 })
 
-module.exports = { loginUser, registerUser, activateAccount, logoutUser }
+// @desc      Send link to the registered user to reset password
+// @route     POST /api/users/forgot/password
+// @access    Public
+const forgotPassword = asyncHandler(async (req, res) => {
+  const { email } = req.body
+  const user = await User.findOne({ email })
+
+  if (!user) {
+    return res.status(404).json({ message: 'No account found !!' })
+  }
+  sendMail(user, 'reset')
+  user.password = 'Pwd$123'
+  user.save()
+  res.status(200).json({
+    message: 'A mail with temporary password has been sent to your e-mail id',
+  })
+})
+
+// @desc      View user profile
+// @route     GET /api/users/me
+// @access    Private
+const myProfile = asyncHandler(async (req, res) => {
+  res.status(200).json(req.user)
+})
+
+// @desc      Update user profile
+// @route     PUT /api/users/me
+// @access    Private
+const updateProfile = asyncHandler(async (req, res) => {
+  const updates = Object.keys(req.body)
+  updates.forEach((update) => (req.user[update] = req.body[update]))
+  await req.user.save()
+  res.status(200).json(req.user)
+})
+
+// @desc    Get all users
+// @route   GET /api/users/all
+// @access  Private/Admin
+const getUsers = asyncHandler(async (req, res) => {
+  const users = await User.find()
+  res.json(users)
+})
+
+// @desc    Delete user
+// @route   DELETE /api/users/:id
+// @access  Private/Admin
+const deleteUser = asyncHandler(async (req, res) => {
+  const user = await User.findById(req.params.id)
+
+  if (user) {
+    await user.remove()
+    res.json({ message: 'User removed' })
+  } else {
+    res.status(404)
+    throw new Error('User not found')
+  }
+})
+
+// @desc    Get user by ID
+// @route   GET /api/users/:id
+// @access  Private/Admin
+const getUserById = asyncHandler(async (req, res) => {
+  const user = await User.findById(req.params.id)
+
+  if (user) {
+    res.json(user)
+  } else {
+    res.status(404)
+    throw new Error('User not found')
+  }
+})
+
+// @desc    Update user
+// @route   PUT /api/users/:id
+// @access  Private/Admin
+const updateUser = asyncHandler(async (req, res) => {
+  const user = await User.findById(req.params.id)
+
+  if (!user) {
+    res.status(404)
+    throw new Error('User not found')
+  }
+
+  const updates = Object.keys(req.body)
+  updates.forEach((update) => (user[update] = req.body[update]))
+  await user.save()
+
+  res.status(202).json(user)
+})
+
+module.exports = {
+  loginUser,
+  registerUser,
+  activateAccount,
+  logoutUser,
+  forgotPassword,
+  myProfile,
+  updateProfile,
+  getUsers,
+  deleteUser,
+  updateUser,
+  getUserById,
+}
