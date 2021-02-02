@@ -25,9 +25,9 @@
 | GET       | /api/users/profile/me           | View user profile	                      | protect, verifyToken	    |
 | PUT       | /api/users/profile/me           | Update user profile	                      | protect, verifyToken        |
 | GET       | /api/users/all	              | Get all users		                      | protect, verifyToken, admin |
-| GET       | /api/users/:id                  | Delete user by ID	                      | protect, verifyToken, admin |
-| PUT       | /api/users/:id                  | Get user by ID		                      | protect, verifyToken, admin |
-| DELET     | /api/users/:id                  | Update user by ID	                      | protect, verifyToken, admin |
+| GET       | /api/users/:id                  | Get user by ID		                      | protect, verifyToken, admin |
+| PUT       | /api/users/:id                  | Update user by ID	                      | protect, verifyToken, admin |
+| DELETE    | /api/users/:id                  | Delete user by ID	                      | protect, verifyToken, admin |
 +-----------+---------------------------------+-----------------------------------------------+-----------------------------+
 
 ```
