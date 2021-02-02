@@ -30,7 +30,7 @@ async function sendMail(user, type) {
         subject: `Activate your account`,
         html: `<h3>Good to see you here ${first_name} ${last_name}.</h3><br/>
             <p>Please click the below link to activate your account and enjoy our services.</p>
-            <p>http://localhost:5000/api/users/account/activate/${str}</p>`,
+            <p>https://nawaz-crm.herokuapp.com/api/users/account/activate/${str}</p>`,
       })
     }
 
