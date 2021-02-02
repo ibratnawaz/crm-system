@@ -1,4 +1,17 @@
-## APIs
+# CRM SYSTEM API
+
+## Getting Started
+
+```
+  Create .env file and add your mongoURI, jwtSecret key and other private credentials
+```
+
+```bash
+  npm install
+  npm run serve # Runs on http://localhost:5000
+```
+
+## API Usage & Endpoints
 
 ```
 +-----------+---------------------------------+-----------------------------------------------+----------------------+
